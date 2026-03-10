@@ -67,7 +67,7 @@ export const TreasuryWithdraw = () => {
   return (
     <Accordion expanded={expanded} onChange={() => setExpanded(!expanded)} sx={{ mt: 1 }}>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography variant="h5">
+        <Typography variant="h4">
           <Trans>Treasury Withdraw</Trans>
         </Typography>
       </AccordionSummary>

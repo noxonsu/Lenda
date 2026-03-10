@@ -62,7 +62,7 @@ export const LiquidationSettings = () => {
   return (
     <Accordion expanded={expanded} onChange={() => setExpanded(!expanded)} sx={{ mt: 1 }}>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography variant="h5">
+        <Typography variant="h4">
           <Trans>Liquidation Settings</Trans>
         </Typography>
       </AccordionSummary>
