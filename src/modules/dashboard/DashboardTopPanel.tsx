@@ -29,7 +29,7 @@ import ClaimGiftIcon from '../../../public/icons/markets/claim-gift-icon.svg';
 import { NetAPYTooltip } from 'src/components/infoTooltips/NetAPYTooltip';
 
 export const DashboardTopPanel = () => {
-  const { currentNetworkConfig, currentMarketData, currentMarket } = useProtocolDataContext();
+  const { currentNetworkConfig, currentMarketData } = useProtocolDataContext();
   const { user, reserves, loading } = useAppDataContext();
   const { currentAccount } = useWeb3Context();
   const [open, setOpen] = useState(false);
@@ -46,16 +46,11 @@ export const DashboardTopPanel = () => {
       let tokenPrice = 0;
       // getting price from reserves for the native rewards for v2 markets
       if (!currentMarketData.v3 && Number(rewardBalance) > 0) {
-        if (currentMarket === 'proto_mainnet') {
-          const aave = reserves.find((reserve) => reserve.symbol === 'AAVE');
-          tokenPrice = aave ? Number(aave.priceInUSD) : 0;
-        } else {
-          reserves.forEach((reserve) => {
-            if (reserve.symbol === currentNetworkConfig.wrappedBaseAssetSymbol) {
-              tokenPrice = Number(reserve.priceInUSD);
-            }
-          });
-        }
+        reserves.forEach((reserve) => {
+          if (reserve.symbol === currentNetworkConfig.wrappedBaseAssetSymbol) {
+            tokenPrice = Number(reserve.priceInUSD);
+          }
+        });
       } else {
         tokenPrice = Number(incentive.rewardPriceFeed);
       }
