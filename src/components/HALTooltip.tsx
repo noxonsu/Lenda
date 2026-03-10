@@ -29,27 +29,9 @@ const PopperComponent = styled(Popper)(
   })
 );
 
-const marketToHALAaveVersionUrlParam = (market: CustomMarket): string | undefined => {
-  const exhaustCases = (_: string) => undefined;
-
-  switch (market) {
-    case CustomMarket.proto_polygon:
-      return 'aavepolygon';
-    case CustomMarket.proto_avalanche:
-      return 'aaveavalanche';
-    case CustomMarket.proto_mainnet:
-      return 'aavev2';
-
-    case CustomMarket.proto_kovan:
-    case CustomMarket.proto_mumbai:
-    case CustomMarket.proto_fuji:
-    case CustomMarket.amm_kovan:
-    case CustomMarket.amm_mainnet:
-      return undefined;
-
-    default:
-      return exhaustCases(market);
-  }
+const marketToHALAaveVersionUrlParam = (_market: CustomMarket): string | undefined => {
+  // HAL does not support BNB Chain Aave v3 yet
+  return undefined;
 };
 
 export default function HALTooltip({}) {
