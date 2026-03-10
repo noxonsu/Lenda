@@ -47,10 +47,7 @@ export type MarketDataType = {
 
 export enum CustomMarket {
   proto_bnb_v3 = 'proto_bnb_v3',
-  // BNB testnet: Aave v3 not officially deployed on chain 97.
-  // For e2e tests use Tenderly fork of BSC mainnet (see cypress/support/tools/tenderly.ts).
-  // To enable: deploy Aave v3 to BNB testnet, fill addresses, uncomment below.
-  // proto_bnb_testnet_v3 = 'proto_bnb_testnet_v3',
+  proto_bnb_testnet_v3 = 'proto_bnb_testnet_v3',
 }
 
 export const marketsData: {
@@ -79,23 +76,22 @@ export const marketsData: {
       UI_INCENTIVE_DATA_PROVIDER: '0x5c5228aC8BC1528482514aF3e27E692495148717',
     },
   },
-  // proto_bnb_testnet_v3: Aave v3 NOT officially deployed on BNB testnet (chain 97).
-  // For e2e auto-tests use Tenderly fork of BSC mainnet:
-  //   const fork = new TenderlyFork({ forkNetworkID: 56 }); // cypress/support/tools/tenderly.ts
-  // To enable: deploy Aave v3 to BNB testnet and fill addresses below.
-  // [CustomMarket.proto_bnb_testnet_v3]: {
-  //   v3: true,
-  //   marketTitle: 'BNB Chain Testnet',
-  //   chainId: ChainId.bsc_testnet,
-  //   enabledFeatures: { faucet: true, incentives: true },
-  //   rpcOnly: true,
-  //   addresses: {
-  //     LENDING_POOL_ADDRESS_PROVIDER: '0x0000000000000000000000000000000000000000', // TODO: deploy
-  //     LENDING_POOL:                  '0x0000000000000000000000000000000000000000', // TODO: deploy
-  //     WETH_GATEWAY:                  '0x0000000000000000000000000000000000000000', // TODO: deploy
-  //     WALLET_BALANCE_PROVIDER:       '0x0000000000000000000000000000000000000000', // TODO: deploy
-  //     UI_POOL_DATA_PROVIDER:         '0x0000000000000000000000000000000000000000', // TODO: deploy
-  //     UI_INCENTIVE_DATA_PROVIDER:    '0x0000000000000000000000000000000000000000', // TODO: deploy
-  //   },
-  // },
+  // Aave v3 deployed on BNB testnet (chain 97) for e2e tests
+  // Deployed via /root/aave-v3-deploy-bnb on 2026-03-10
+  [CustomMarket.proto_bnb_testnet_v3]: {
+    v3: true,
+    marketTitle: 'BNB Chain Testnet',
+    chainId: ChainId.bsc_testnet,
+    enabledFeatures: { faucet: true, incentives: true },
+    rpcOnly: true,
+    addresses: {
+      LENDING_POOL_ADDRESS_PROVIDER: '0x377D405892526997e4aF347Ec0D2A5Ed44A13835',
+      LENDING_POOL:                  '0x594ce065aB781bD970F61f3d7f10F2BEa451293D',
+      WETH_GATEWAY:                  '0x575eB6f2a567E760b1f11DaF255D84d6650FB335',
+      WALLET_BALANCE_PROVIDER:       '0xACB2e5c44F3B3AD618746594cbEb64C90c671973',
+      UI_POOL_DATA_PROVIDER:         '0x54A47A5B9065DB9bCa750ED5c4BCaf42b14cE00C',
+      UI_INCENTIVE_DATA_PROVIDER:    '0x9619E3a884129806Cf19a006b93Da6999C7D9E78',
+      FAUCET:                        '0xf0B359d4fcA26fCDb305f5Bb625EfBAeb1cE123E',
+    },
+  },
 } as const;
