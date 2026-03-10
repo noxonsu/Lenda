@@ -9,6 +9,8 @@ import {
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { AdminSettings } from '../types';
 import { Trans } from '@lingui/macro';
+import { TreasuryWithdraw } from './TreasuryWithdraw';
+import { LiquidationSettings } from './LiquidationSettings';
 
 type Props = {
   disabled: boolean;
@@ -34,13 +36,11 @@ export const ContractSettings = ({ disabled }: Props) => {
         <Typography variant="h4">
           <Trans>Contracts</Trans>
         </Typography>
-        <Typography sx={{ color: 'text.secondary', ml: 2, alignSelf: 'center' }}>
-          [in development]
-        </Typography>
       </AccordionSummary>
       <AccordionDetails sx={{ textAlign: 'start', display: 'flex' }}>
         <FormControl sx={{ flexGrow: 1, '& > *:not(:last-child)': { m: 0, mb: 2 } }}>
-          Coming soon 🧑‍🔧
+          <TreasuryWithdraw />
+          <LiquidationSettings />
         </FormControl>
       </AccordionDetails>
     </Accordion>
