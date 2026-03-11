@@ -136,6 +136,7 @@ msgstr "Already on cooldown"
 #: src/components/transactions/AssetInput.tsx
 #: src/components/transactions/Faucet/FaucetModalContent.tsx
 #: src/components/transactions/StakeRewardClaim/StakeRewardClaimModalContent.tsx
+#: src/modules/admin-panel/components/TreasuryWithdraw.tsx
 msgid "Amount"
 msgstr "Amount"
 
@@ -147,6 +148,7 @@ msgstr "Amount must be greater than 0"
 msgid "Ampleforth FAQ"
 msgstr "Ampleforth FAQ"
 
+#: src/modules/admin-panel/components/LiquidationSettings.tsx
 #: src/modules/admin-panel/components/UiSettings.tsx
 msgid "Apply"
 msgstr "Apply"
@@ -454,6 +456,10 @@ msgstr "Copy error text"
 #: pages/governance/proposal/[proposalId].governance.tsx
 msgid "Created"
 msgstr "Created"
+
+#: src/modules/admin-panel/components/LiquidationSettings.tsx
+msgid "Current"
+msgstr "Current"
 
 #: src/modules/dashboard/LiquidationRiskParametresModal/LiquidationRiskParametresModal.tsx
 msgid "Current LTV"
@@ -793,6 +799,10 @@ msgstr "Isolated assets have limited borrowing power and other assets cannot be 
 msgid "It can take several seconds"
 msgstr "It can take several seconds"
 
+#: src/modules/admin-panel/components/LiquidationSettings.tsx
+msgid "LTV (basis points, e.g. 8000 = 80%)"
+msgstr "LTV (basis points, e.g. 8000 = 80%)"
+
 #: src/layouts/components/LanguageSwitcher.tsx
 msgid "Language"
 msgstr "Language"
@@ -817,6 +827,18 @@ msgstr "Links"
 #: src/modules/dashboard/LiquidationRiskParametresModal/components/LTVContent.tsx
 msgid "Liquidation <0/> threshold"
 msgstr "Liquidation <0/> threshold"
+
+#: src/modules/admin-panel/components/LiquidationSettings.tsx
+msgid "Liquidation Bonus (basis points, e.g. 10500 = 5% bonus)"
+msgstr "Liquidation Bonus (basis points, e.g. 10500 = 5% bonus)"
+
+#: src/modules/admin-panel/components/LiquidationSettings.tsx
+msgid "Liquidation Settings"
+msgstr "Liquidation Settings"
+
+#: src/modules/admin-panel/components/LiquidationSettings.tsx
+msgid "Liquidation Threshold (basis points, e.g. 8500 = 85%)"
+msgstr "Liquidation Threshold (basis points, e.g. 8500 = 85%)"
 
 #: src/components/transactions/FlowCommons/TxModalDetails.tsx
 msgid "Liquidation at"
@@ -1037,6 +1059,11 @@ msgstr "Pool addresses provider is not registered"
 msgid "Price impact"
 msgstr "Price impact"
 
+#: src/modules/admin-panel/components/LiquidationSettings.tsx
+#: src/modules/admin-panel/components/TreasuryWithdraw.tsx
+msgid "Processing..."
+msgstr "Processing..."
+
 #: pages/governance/proposal/[proposalId].governance.tsx
 msgid "Proposal details"
 msgstr "Proposal details"
@@ -1069,6 +1096,7 @@ msgid "Reached"
 msgstr "Reached"
 
 #: src/components/transactions/GovDelegation/GovDelegationModalContent.tsx
+#: src/modules/admin-panel/components/TreasuryWithdraw.tsx
 msgid "Recipient address"
 msgstr "Recipient address"
 
@@ -1187,9 +1215,18 @@ msgstr "Select APY type to switch"
 msgid "Select Aave Market"
 msgstr "Select Aave Market"
 
+#: src/modules/admin-panel/components/LiquidationSettings.tsx
+#: src/modules/admin-panel/components/TreasuryWithdraw.tsx
+msgid "Select asset"
+msgstr "Select asset"
+
 #: src/layouts/components/LanguageSwitcher.tsx
 msgid "Select language"
 msgstr "Select language"
+
+#: src/modules/admin-panel/components/LiquidationSettings.tsx
+msgid "Settings applied successfully"
+msgstr "Settings applied successfully"
 
 #: src/components/HALTooltip.tsx
 msgid "Setup triggers and receive notifications about your Health Factor status using Hal app."
@@ -1564,6 +1601,10 @@ msgstr "Transaction failed"
 msgid "Transaction overview"
 msgstr "Transaction overview"
 
+#: src/modules/admin-panel/components/TreasuryWithdraw.tsx
+msgid "Treasury Withdraw"
+msgstr "Treasury Withdraw"
+
 #: src/modules/admin-panel/components/AdminPanelWrapper.tsx
 msgid "Try to change your wallet account"
 msgstr "Try to change your wallet account"
@@ -1710,6 +1751,7 @@ msgid "With a voting power of <0/>"
 msgstr "With a voting power of <0/>"
 
 #: src/components/transactions/Withdraw/WithdrawModal.tsx
+#: src/modules/admin-panel/components/TreasuryWithdraw.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsListItem.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsListMobileItem.tsx
 msgid "Withdraw"
@@ -1722,6 +1764,10 @@ msgstr "Withdraw {symbol}"
 #: src/components/transactions/Withdraw/WithdrawActions.tsx
 msgid "Withdrawing {symbol}"
 msgstr "Withdrawing {symbol}"
+
+#: src/modules/admin-panel/components/TreasuryWithdraw.tsx
+msgid "Withdrawn successfully"
+msgstr "Withdrawn successfully"
 
 #: src/components/transactions/TxActionsWrapper.tsx
 msgid "Wrong Network"

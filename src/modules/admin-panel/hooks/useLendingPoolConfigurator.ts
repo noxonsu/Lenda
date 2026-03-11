@@ -6,14 +6,13 @@ import ADDRESSES_PROVIDER_ABI from '../constants/lendingPoolAddressesProvider.js
 import CONFIGURATOR_ABI from '../constants/lendingPoolConfigurator.json';
 
 export function useLendingPoolConfigurator() {
-  const { provider } = useWeb3Context();
-  const { currentMarketData, jsonRpcProvider } = useProtocolDataContext();
+  const { provider, chainId } = useWeb3Context();
+  const { currentMarketData, jsonRpcProvider, currentChainId } = useProtocolDataContext();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const getConfiguratorContract = async (): Promise<Contract> => {
-    const addressesProviderAddress =
-      currentMarketData.addresses.LENDING_POOL_ADDRESS_PROVIDER;
+    const addressesProviderAddress = currentMarketData.addresses.LENDING_POOL_ADDRESS_PROVIDER;
     const addressesProvider = new Contract(
       addressesProviderAddress,
       ADDRESSES_PROVIDER_ABI,
@@ -23,15 +22,25 @@ export function useLendingPoolConfigurator() {
     return new Contract(configuratorAddress, CONFIGURATOR_ABI, jsonRpcProvider);
   };
 
+  const checkChain = () => {
+    if (chainId !== currentChainId) {
+      throw new Error(`Wrong network. Switch wallet to chain ${currentChainId}.`);
+    }
+  };
+
   const withdrawFromReserve = async (asset: string, amount: string, to: string): Promise<void> => {
     if (!provider) {
+      setError('Wallet not connected');
       throw new Error('Wallet not connected');
     }
     setLoading(true);
     setError(null);
     try {
+      checkChain();
       const contract = await getConfiguratorContract();
-      const tx = await contract.connect(provider.getSigner()).withdrawFromReserve(asset, amount, to);
+      const tx = await contract
+        .connect(provider.getSigner())
+        .withdrawFromReserve(asset, amount, to);
       await tx.wait(1);
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : String(e);
@@ -49,11 +58,13 @@ export function useLendingPoolConfigurator() {
     liquidationBonus: string
   ): Promise<void> => {
     if (!provider) {
+      setError('Wallet not connected');
       throw new Error('Wallet not connected');
     }
     setLoading(true);
     setError(null);
     try {
+      checkChain();
       const contract = await getConfiguratorContract();
       const tx = await contract
         .connect(provider.getSigner())

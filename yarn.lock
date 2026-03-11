@@ -2,17 +2,17 @@
 # yarn lockfile v1
 
 
-"@aave/contract-helpers@https://gitpkg.now.sh/noxonsu/aave-utilities/packages/contract-helpers?master&scripts.postinstall=%26%26%20yarn%20--ignore-scripts%20%26%26%20yarn%20build":
+"@aave/contract-helpers@file:./vendor/aave-contract-helpers.tgz":
   version "1.1.1"
-  resolved "https://gitpkg.now.sh/noxonsu/aave-utilities/packages/contract-helpers?master&scripts.postinstall=%26%26%20yarn%20--ignore-scripts%20%26%26%20yarn%20build#6c95c22c0a67c4f1b46165d29f5894b3533f2d73"
+  resolved "file:./vendor/aave-contract-helpers.tgz#51016704e9b24a4470b61868a83e373325752d44"
   dependencies:
     bignumber.js "^9.0.1"
     isomorphic-unfetch "^3.1.0"
     tslib "^2.3.1"
 
-"@aave/math-utils@https://gitpkg.now.sh/noxonsu/aave-utilities/packages/math-utils?master&scripts.postinstall=%26%26%20yarn%20--ignore-scripts%20%26%26%20yarn%20build":
+"@aave/math-utils@file:./vendor/aave-math-utils.tgz":
   version "1.1.1"
-  resolved "https://gitpkg.now.sh/noxonsu/aave-utilities/packages/math-utils?master&scripts.postinstall=%26%26%20yarn%20--ignore-scripts%20%26%26%20yarn%20build#6f9d86ae4ac9e89bc63d54e5044c1b22d4204161"
+  resolved "file:./vendor/aave-math-utils.tgz#c0f8f84a54051bbdf407313f29733f2d52b47447"
   dependencies:
     bignumber.js "^9.0.1"
     tslib "^2.3.1"

@@ -27,27 +27,50 @@ export const LiquidationSettings = () => {
   const [ltv, setLtv] = useState('');
   const [threshold, setThreshold] = useState('');
   const [bonus, setBonus] = useState('');
+  const [validationError, setValidationError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
   const selectedReserve = enabledReserves.find((r) => r.underlyingAsset === selectedAsset);
 
-  // Populate current values when reserve is selected
+  // Populate current values when reserve data changes
   useEffect(() => {
     if (!selectedReserve) return;
     setLtv(selectedReserve.baseLTVasCollateral);
     setThreshold(selectedReserve.reserveLiquidationThreshold);
     setBonus(selectedReserve.reserveLiquidationBonus);
     setSuccess(false);
-  }, [selectedAsset]);
+    setValidationError(null);
+  }, [selectedReserve]);
 
   const handleAssetChange = (e: SelectChangeEvent) => {
     setSelectedAsset(e.target.value);
     setSuccess(false);
+    setValidationError(null);
+  };
+
+  const validateParams = (): string | null => {
+    const ltvN = Number(ltv);
+    const thresholdN = Number(threshold);
+    const bonusN = Number(bonus);
+    if (!Number.isInteger(ltvN) || !Number.isInteger(thresholdN) || !Number.isInteger(bonusN)) {
+      return 'All values must be integers (basis points)';
+    }
+    if (ltvN < 0 || ltvN > 10000) return 'LTV must be between 0 and 10000';
+    if (thresholdN < 0 || thresholdN > 10000) return 'Threshold must be between 0 and 10000';
+    if (ltvN > thresholdN) return 'LTV must be ≤ Liquidation Threshold';
+    if (bonusN < 10000) return 'Liquidation Bonus must be ≥ 10000';
+    return null;
   };
 
   const handleApply = async () => {
     if (!selectedAsset || !ltv || !threshold || !bonus) return;
+    const err = validateParams();
+    if (err) {
+      setValidationError(err);
+      return;
+    }
+    setValidationError(null);
     setSuccess(false);
     try {
       await configureReserveAsCollateral(selectedAsset, ltv, threshold, bonus);
@@ -123,7 +146,7 @@ export const LiquidationSettings = () => {
             type="number"
             inputProps={{ min: 10000 }}
           />
-          {error && <Alert severity="error">{error}</Alert>}
+          {(error || validationError) && <Alert severity="error">{validationError || error}</Alert>}
           {success && (
             <Alert severity="success">
               <Trans>Settings applied successfully</Trans>
